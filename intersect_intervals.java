@@ -15,7 +15,7 @@ class Solution {
             if(max<=min){
                 res.add(new int[]{max,min});
             }
-            
+            //because as in line 13 shorter interval has ended
             if(a[i][1]<b[j][1])
                 i++;
             else

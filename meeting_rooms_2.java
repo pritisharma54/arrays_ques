@@ -51,3 +51,50 @@ public class Solution {
         return pq.size();
     }
 }
+@@@@@@
+/*
+	Time Complexity: O(N logN)
+	Space complexity: O(N)
+	
+	where N is the number of intervals.
+*/
+
+import java.util.Arrays;
+public class Solution {
+
+	public static int minRooms(int[][] intervals) {
+
+		int N = intervals.length;
+		
+        // Storing start time and end time in different arrays.
+        int[] startTime = new int[N];
+		int[] endTime = new int[N];
+
+		for(int i=0;i<N;i++) {
+			startTime[i] = intervals[i][0];
+			endTime[i] = intervals[i][1];
+		}
+		
+        Arrays.sort(startTime);
+		Arrays.sort(endTime);
+		
+        int result = 1;
+		int roomRequired = 0;
+		
+        int i = 0, j = 0;
+		while(i < N && j < N){
+		
+            if(startTime[i] < endTime[j]){
+		        roomRequired++;
+		        i++;
+		    }else{
+		        roomRequired--;
+		        j++;
+		    }
+		
+            result = Math.max(result, roomRequired);
+		}
+		
+        return result;
+	}
+}

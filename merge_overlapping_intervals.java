@@ -21,11 +21,13 @@ class Solution {
             ll.add(new Interval(temp[0],temp[1]));
         }
         
-        Collections.sort(ll,new Comparator<>(){
-            public int compare(Interval a,Interval b){
-                return a.s-b.s;
-            }
-        });
+//         Collections.sort(ll,new Comparator<>(){
+//             public int compare(Interval a,Interval b){
+//                 return a.s-b.s;
+//             }
+//         });
+         Collections.sort(ll, (a, b) -> Integer.compare(a.s, b.s));
+        
         LinkedList<Interval> result= new LinkedList<>();
         
         for(Interval curr:ll){
